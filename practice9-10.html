@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기 만들기</title>
+    <style>
+        input{
+            width: 99%;
+        }
+        .calculator {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 10px; 
+        width: 100%;
+        }
+        button{
+            width: 100px;
+        }
+    </style>
+    <script>
+        function button(c){
+            let input = document.getElementById('text');
+            if(c=="="){
+                input.value = eval(input.value);
+            }
+            else if(c=="ce"||c=="c"){
+                input.value="0";
+            }
+            else if(c=="back"){
+                input.value=input.value.slice(0,-1);
+            }
+            else if(c!="none"){
+                if(input.value=='0'){
+                    input.value='';
+                }
+                input.value+=c;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>계산기 만들기</h2>
+    <hr>
+    <input id="text" type="text" value="0" onclick="this.value=''"><br><br>
+    <div class="calculator">
+        <button onclick="button('back')">BACK</button>
+        <button onclick="button('ce')">CE</button>
+        <button onclick="button('c')">C</button>
+        <button onclick="button('=')">=</button>
+
+        <button onclick="button('7')">7</button>
+        <button onclick="button('8')">8</button>
+        <button onclick="button('9')">9</button>
+        <button onclick="button('/')">/</button>
+
+        <button onclick="button('4')">4</button>
+        <button onclick="button('5')">5</button>
+        <button onclick="button('6')">6</button>
+        <button onclick="button('*')">*</button>
+
+        <button onclick="button('1')">1</button>
+        <button onclick="button('2')">2</button>
+        <button onclick="button('3')">3</button>
+        <button onclick="button('-')">-</button>
+
+        <button onclick="button('0')">0</button>
+        <button onclick="button('+')">+</button>
+        <button onclick="button('none')">NONE</button>
+        <button onclick="button('none')">NONE</button>
+    </div>  
+</body>
+</html>
